@@ -1,0 +1,24 @@
+{
+  "name": "bunyan-tree",
+  "version": "0.0.1",
+  "description": "Setting the level of a Bunyan logger and all its children at once",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.telecomsante.com:tools/bunyan-tree.git"
+  },
+  "keywords": [
+    "bunyan",
+    "recursive",
+    "log",
+    "level"
+  ],
+  "author": "Thibault Hild",
+  "license": "SEE LICENSE IN license.txt",
+  "dependencies": {
+    "bunyan": "1.5.1"
+  }
+}
