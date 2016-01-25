@@ -1,6 +1,6 @@
 {
   "name": "bunyan-tree",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Setting the level of a Bunyan logger and all its children at once",
   "main": "index.js",
   "scripts": {
