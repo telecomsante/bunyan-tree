@@ -4,6 +4,8 @@ A current limitation of bunyan is that one cannot set the level of a logger and 
 
 `tsante-bunyan-tree` provides this feature at the cost of being a slightly more verbose during log objects declarations.
 
+In fact, `level` is not the only method that can be applied recursively to a whole bunyan tree, recursive versions of all bunyan methods are available in the `tree` attribute of a logger.
+
 Here is a simple usage example:
 
 main.js:
@@ -14,7 +16,7 @@ var log = require('tsante-bunyan-tree');
 
 log.seed({ /* bunyan options */});
 
-log.treeLevel('warning');
+log.tree.level('warning');
 
 someModule();
 ```

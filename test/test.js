@@ -55,7 +55,7 @@ testStream.ensureLog({
 log.info('COUCOU');
 childLog.info('COUCOU');
 
-log.treeLevel('warning');
+log.tree.level('warn');
 testStream.ensureNoLog();
 log.info('COUCOU');
 childLog.info('COUCOU');

@@ -24,10 +24,13 @@ var bunyanTree = function (options) {
 		return branch;
 	};
 
-	that.treeLevel = function (level) {
-		trunk.level(level);
-		branches.forEach(branch => branch.treeLevel(level));
-	};
+	that.tree = {};
+	bunyanMethods.forEach(m => {
+		that.tree[m] = function () {
+			trunk[m].apply(trunk, arguments);
+			branches.forEach(branch => branch.tree[m].apply(branch, arguments));
+		};
+	});
 
 	return that;
 };
