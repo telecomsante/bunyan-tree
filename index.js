@@ -15,6 +15,7 @@ var bunyanTree = function (options) {
 			return trunk[m].apply(trunk, arguments);
 		});
 		branches.forEach(branch => branch.seed(trunk));
+		return that;
 	};
 
 	that.fork = function (options) {
