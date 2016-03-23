@@ -22,6 +22,8 @@ This changelog has to be modified this way:
 
 ## Current version
 
+## v1.1.0
+
 - [FIX] issue #1: Missing example for child declaration
 - [FIX] update dependencies
 - [FIX] added a changelog
