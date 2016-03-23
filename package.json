@@ -19,6 +19,6 @@
   "author": "Thibault Hild",
   "license": "SEE LICENSE IN license.txt",
   "dependencies": {
-    "bunyan": "1.7.1"
+    "bunyan": "1.8.0"
   }
 }

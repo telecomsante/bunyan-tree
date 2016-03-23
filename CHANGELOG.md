@@ -17,6 +17,7 @@ This changelog has to be modified this way:
 
 ## Current version
 
+- [FIX] update dependencies
 - [FIX] added a changelog
 - [FEA] seed returns the logger to chain calls
 
