@@ -1,5 +1,7 @@
 # The bunyan tree
 
+> For developers, you must comply with the release procedure described in the [changelog](CHANGELOG.md).
+
 A current limitation of bunyan is that one cannot set the level of a logger and all its children at once.
 
 `tsante-bunyan-tree` provides this feature at the cost of being a slightly more verbose during log objects declarations.
@@ -24,7 +26,7 @@ someModule();
 someModule.js:
 
 ```javascript
-var log = require('tsante-bunyan-tree').fork({/* child options, i.e. component name */});
+var log = require('tsante-bunyan-tree').fork({/* child options, i.e. component name (component: 'myComponent') */});
 
 log.info('this will be logged');
 
