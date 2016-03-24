@@ -22,6 +22,8 @@ This changelog has to be modified this way:
 
 ## Current version
 
+## v1.1.1
+
 - [FIX] ensure ES5 compatibility
 
 ## v1.1.0
