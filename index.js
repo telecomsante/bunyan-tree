@@ -2,7 +2,9 @@
 
 var bunyan = require('bunyan');
 
-var bunyanMethods = Object.keys(bunyan.prototype).filter(k => typeof bunyan.prototype[k] === 'function');
+var bunyanMethods = Object.keys(bunyan.prototype).filter(function (k) {
+	return typeof bunyan.prototype[k] === 'function';
+});
 
 var bunyanTree = function (options) {
 	var that = {};
@@ -11,10 +13,12 @@ var bunyanTree = function (options) {
 
 	that.seed = function (opts) {
 		trunk = opts instanceof bunyan ? opts.child(options) : bunyan.createLogger(opts);
-		bunyanMethods.forEach(m => that[m] = function () {
-			return trunk[m].apply(trunk, arguments);
+		bunyanMethods.forEach(function (m) {
+			that[m] = trunk[m].bind(trunk);
 		});
-		branches.forEach(branch => branch.seed(trunk));
+		branches.forEach(function (branch) {
+			branch.seed(trunk);
+		});
 		return that;
 	};
 
@@ -26,10 +30,13 @@ var bunyanTree = function (options) {
 	};
 
 	that.tree = {};
-	bunyanMethods.forEach(m => {
+	bunyanMethods.forEach(function (m) {
 		that.tree[m] = function () {
-			trunk[m].apply(trunk, arguments);
-			branches.forEach(branch => branch.tree[m].apply(branch, arguments));
+			var args = arguments;
+			branches.forEach(function (branch) {
+				branch.tree[m].apply(branch, args);
+			});
+			return trunk[m].apply(trunk, args);
 		};
 	});
 

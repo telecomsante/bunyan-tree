@@ -4,6 +4,9 @@
   "description": "Setting the level of a Bunyan logger and all its children at once",
   "main": "index.js",
   "scripts": {
+    "jshint": "jshint . --exclude-path .gitignore",
+    "jscs": "jscs .",
+    "check": "npm run jshint && npm run jscs",
     "test": "node test/test.js"
   },
   "repository": {
@@ -20,5 +23,9 @@
   "license": "SEE LICENSE IN license.txt",
   "dependencies": {
     "bunyan": "1.8.0"
+  },
+  "devDependencies": {
+    "jscs": "2.11.0",
+    "jshint": "2.9.1"
   }
 }

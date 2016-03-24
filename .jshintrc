@@ -11,9 +11,6 @@
 	// Define globals exposed by modern browsers.
 	"browser": true,
 
-	// ECMAScript 6
-	"esnext": true,
-
 	/*
 	 * ENFORCING OPTIONS
 	 * =================

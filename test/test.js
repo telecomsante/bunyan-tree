@@ -1,43 +1,44 @@
 'use strict';
 
-let stream   = require('stream');
-let log      = require('../index');
-let childLog = require('../index').fork({component: 'child'});
+var stream   = require('stream');
+var util     = require('util');
+var log      = require('../index');
+var childLog = require('../index').fork({ component: 'child' });
 
-class TestStream extends stream.Writable {
-	constructor() {
-		super();
-		this.acceptLog = true;
+var TestStream = function () {
+	stream.Writable.call(this);
+	this.acceptLog = true;
+};
+
+util.inherits(TestStream, stream.Writable);
+
+TestStream.prototype.ensureLog = function (log) {
+	this.acceptLog = true;
+	this.referenceLog = log;
+};
+
+TestStream.prototype.ensureNoLog = function () {
+	this.acceptLog = false;
+};
+
+TestStream.prototype._write = function (chunk, enc, next) {
+	if (!this.acceptLog) {
+		throw new Error('does not accept ' + chunk.toString());
 	}
-
-	ensureLog(log) {
-		this.acceptLog = true;
-		this.referenceLog = log;
+	if (this.referenceLog) {
+		var log = JSON.parse(chunk);
+		Object.keys(this.referenceLog).forEach(function (key) {
+			if (log[key] !== this.referenceLog[key]) {
+				throw new Error('received ' + JSON.stringify(log) + ' instead of ' + JSON.stringify(this.referenceLog));
+			}
+		}.bind(this));
+	} else {
+		console.log(chunk.toString());
 	}
+	next();
+};
 
-	ensureNoLog() {
-		this.acceptLog = false;
-	}
-
-	_write(chunk, enc, next) {
-		if(!this.acceptLog) {
-			throw new Error(`does not accept ${chunk.toString()}`);
-		}
-		if (this.referenceLog) {
-			let log = JSON.parse(chunk);
-			Object.keys(this.referenceLog).forEach(key => {
-				if (log[key] !== this.referenceLog[key]) {
-					throw new Error(`received ${JSON.stringify(log)} instead of ${JSON.stringify(this.referenceLog)}`);
-				}
-			});
-		} else {
-			console.log(chunk.toString());
-		}
-		next();
-	}
-}
-
-let testStream = new TestStream();
+var testStream = new TestStream();
 
 log.seed({
 	name: 'TEST',
