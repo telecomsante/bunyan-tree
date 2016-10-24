@@ -22,6 +22,10 @@ This changelog has to be modified this way:
 
 ## Current version
 
+## v1.1.2
+
+- rename project as __bunyan-tree__ and publish it on the npm registry.
+
 ## v1.1.1
 
 - [FIX] ensure ES5 compatibility
