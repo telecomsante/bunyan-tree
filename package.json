@@ -7,7 +7,7 @@
     "jshint": "jshint . --exclude-path .gitignore",
     "jscs": "jscs .",
     "check": "npm run jshint && npm run jscs",
-    "test": "node test/test.js"
+    "test": "nyc node test/test.js"
   },
   "repository": "telecomsante/bunyan-tree",
   "keywords": [
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "jscs": "2.11.0",
-    "jshint": "2.9.1"
+    "jshint": "2.9.1",
+    "nyc": "^10.2.0"
   }
 }

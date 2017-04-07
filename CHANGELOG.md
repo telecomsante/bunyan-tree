@@ -22,6 +22,8 @@ This changelog has to be modified this way:
 
 ## Current version
 
+- add test code coverage by using nyc
+
 ## v1.1.2
 
 - rename project as __bunyan-tree__ and publish it on the npm registry.
