@@ -22,6 +22,8 @@ This changelog has to be modified this way:
 
 ## Current version
 
+## v1.1.3
+
 - add license in package.json
 - add test code coverage by using nyc
 
